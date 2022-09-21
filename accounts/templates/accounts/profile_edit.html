@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load bootstrap4 %}
+    <!-- bradcam_area  -->
+    <div class="bradcam_area bradcam_bg_1">
+        <div class="container">
+        </div>
+    </div>
+    <!--/ bradcam_area  -->
+
+    <div class="job_details_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">  
+                    <div class="apply_job_form white-bg">
+                        <h4>Edit Profile</h4>
+                        <form method = "post" enctype="multipart/form-data">
+                            {%csrf_token%}
+                            {% bootstrap_form usform %}
+                            {% bootstrap_form prform %}
+
+                            <button class="boxed-btn3 w-100 mt-3 mb-3" type="submit">submit</button>
+                            
+                        </form>
+                    </div>
+                </div>
+
+        
+            </div>
+        </div>
+    </div>
+
+{% endblock  %}

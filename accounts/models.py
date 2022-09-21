@@ -11,6 +11,10 @@ class Porofile(models.Model):
     phone_number = models.CharField(max_length=15)
     image = models.ImageField(upload_to ='profile/')
 
+    def __str__(self):
+        return self.user.username
+
+
 # create new user ----> create new profile using django signals
 
 @receiver(post_save,sender = User)
@@ -22,3 +26,6 @@ def create_user_profile(sender,instance,created,**kwrgs):
 
 class City(models.Model):
     name = models.CharField(max_length=30)
+
+    def __str__(self):
+        return self.name

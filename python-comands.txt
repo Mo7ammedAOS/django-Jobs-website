@@ -1,5 +1,11 @@
 
 
+	- cd Job_Board/src
+	
+	- scripts/activate
+
+	- deactivate
+	
 	- python manage.py runserver
 	
 	- python manage.py makemigrations
