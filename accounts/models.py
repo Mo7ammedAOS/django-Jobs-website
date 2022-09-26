@@ -5,7 +5,7 @@ from django.dispatch import receiver
 
 # Create your models here.
 
-class Porofile(models.Model):
+class Profile(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE)
     city = models.ForeignKey('City',related_name='user_city',on_delete=models.CASCADE,null=True,blank=True)
     phone_number = models.CharField(max_length=15)
@@ -20,7 +20,7 @@ class Porofile(models.Model):
 @receiver(post_save,sender = User)
 def create_user_profile(sender,instance,created,**kwrgs):
     if created:
-        Porofile.objects.create(user = instance)
+        Profile.objects.create(user = instance)
 
 
 

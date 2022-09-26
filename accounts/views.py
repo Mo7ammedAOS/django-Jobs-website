@@ -4,7 +4,7 @@ import re
 from django.shortcuts import render , redirect
 from .forms import SignupForm , UserForm , ProfileForm
 from django.contrib.auth import authenticate , login
-from .models import Porofile
+from .models import Profile
 
 # Create your views here. 
 def signup(request):
@@ -12,11 +12,11 @@ def signup(request):
         form = SignupForm(request.POST)
         if form.is_valid():
             form.save()
-            username = form.cleaned_data('username')
-            password = form.changed_data('password1')
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password1']
             user = authenticate(username=username,password=password)
             login(request,user)
-            redirect('/accounts/profile ')
+            return redirect('/accounts/profile/')
     else:
         form =SignupForm()
 
@@ -26,12 +26,12 @@ def signup(request):
 
 
 def profile(request):
-    profile = Porofile.objects.get(user = request.user)
+    profile = Profile.objects.get(user = request.user)
     context ={'profile':profile}
     return render(request,'accounts/profile.html',context)
 
 def edit_profile(request):
-    profile = Porofile.objects.get(user=request.user)
+    profile = Profile.objects.get(user=request.user)
 
     if request.method == 'POST':
         usform = UserForm(request.POST,instance=request.user)

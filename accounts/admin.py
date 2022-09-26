@@ -1,7 +1,7 @@
 from django.contrib import admin
-from .models import Porofile,City
+from .models import Profile,City
 
 # Register your models here.
 
-admin.site.register(Porofile)
+admin.site.register(Profile)
 admin.site.register(City)
